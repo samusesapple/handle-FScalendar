@@ -10,24 +10,13 @@ import FSCalendar
 
 class MonthlyView: UIView {
     
-//    let mainLabel: UILabel = {
-//       let label = UILabel()
-//        label.text = "23년 3월"
-//        label.font = UIFont.boldSystemFont(ofSize: 28)
-//        label.backgroundColor = .clear
-//        label.tintColor = .black
-//        return label
-//    }()
-    
     let calendarView: FSCalendar = {
         let cal = FSCalendar()
         cal.locale = Locale(identifier: "ko_KR")
         cal.backgroundColor = .white
-//        cal.appearance.titlePlaceholderColor = UIColor.white.withAlphaComponent(0.2)
-        // 위아래로 넘기기
         cal.scrollEnabled = true
         cal.scrollDirection = .vertical
-//        cal.appearance.headerMinimumDissolvedAlpha = 0.0
+
         // 년월
         cal.appearance.headerDateFormat = "YYYY년 MM월"
         cal.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 28)
@@ -50,7 +39,7 @@ class MonthlyView: UIView {
         return cal
     }()
     
-    // MARK: - initializer
+    // MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -63,7 +52,6 @@ class MonthlyView: UIView {
     // MARK: - set UI()
     func setUI() {
         self.backgroundColor = .white
-//        self.addSubview(mainLabel)
         self.addSubview(calendarView)
         setAutolayout()
     }
@@ -71,15 +59,9 @@ class MonthlyView: UIView {
     
     // MARK: - set Autolayout()
     func setAutolayout() {
-//        mainLabel.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            mainLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 55),
-//            mainLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 31)
-//        ])
-        
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            calendarView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 25),
+            calendarView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: -15),
             calendarView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 31),
             calendarView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -31),
             calendarView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -175)
@@ -87,5 +69,6 @@ class MonthlyView: UIView {
     }
     
     
-    
 }
+
+
