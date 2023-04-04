@@ -94,6 +94,14 @@ final class CustomAlertView: UIView {
         return label
     }()
     
+    private var lockedImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "lock.fill")
+        imageView.tintColor = UIColor.black
+        imageView.frame = CGRect(x: 16, y: 16, width: 16, height: 16)
+        return imageView
+    }()
+    
     // + 버튼
     private lazy var plusButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -105,11 +113,11 @@ final class CustomAlertView: UIView {
     }()
     
     private var buttonPlusImage: UIImageView = {
-       let image = UIImageView()
-        image.image = UIImage(systemName: "plus")
-        image.tintColor = UIColor.black
-        image.frame = CGRect(x: 18, y: 18, width: 20, height: 20)
-        return image
+       let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "plus")
+        imageView.tintColor = UIColor.black
+        imageView.frame = CGRect(x: 18, y: 18, width: 20, height: 20)
+        return imageView
     }()
     
     
@@ -148,6 +156,17 @@ final class CustomAlertView: UIView {
         super.init(frame: frame)
         self.backgroundColor = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 0.3)
         addSubview(alertView)
+        setAlertView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+    // MARK: - set AlertView()
+    func setAlertView() {
         alertView.addSubview(alertDate)
         alertView.addSubview(diaryStack)
         alertView.addSubview(diaryCircle)
@@ -155,6 +174,7 @@ final class CustomAlertView: UIView {
         alertView.addSubview(noteCircle)
         alertView.addSubview(lockedDiaryStack)
         alertView.addSubview(lockedDiaryCircle)
+        alertView.addSubview(lockedImage)
         
         alertView.addSubview(plusButton)
   
@@ -162,9 +182,6 @@ final class CustomAlertView: UIView {
         plusButton.addDashedCircle()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     
     // MARK: - set Autolayout()
@@ -201,6 +218,9 @@ final class CustomAlertView: UIView {
         NSLayoutConstraint.activate([lockedDiaryCircle.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 16),
             lockedDiaryCircle.rightAnchor.constraint(equalTo: alertLockedDiary.leftAnchor, constant: 6), lockedDiaryCircle.centerYAnchor.constraint(equalTo: alertLockedDiary.centerYAnchor)])
         
+        lockedImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([lockedImage.leftAnchor.constraint(equalTo: lockedDiaryTitle.rightAnchor, constant: 2), lockedImage.centerYAnchor.constraint(equalTo: lockedDiaryTitle.centerYAnchor)])
+        
         // 추가 버튼
         plusButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([plusButton.centerXAnchor.constraint(equalTo: alertView.centerXAnchor), plusButton.widthAnchor.constraint(equalToConstant: 50), plusButton.heightAnchor.constraint(equalTo: plusButton.widthAnchor, multiplier: 1), plusButton.bottomAnchor.constraint(equalTo: alertView.bottomAnchor, constant: -24)])
@@ -211,7 +231,8 @@ final class CustomAlertView: UIView {
     
     
 }
-
+// MARK: - Extension
+// 동그란 레이어를 만들기 위한 UIView 확장
 extension UIView {
     func addDashedCircle() {
         let circleLayer = CAShapeLayer()

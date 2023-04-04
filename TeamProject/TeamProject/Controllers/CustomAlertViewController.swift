@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectionAlertViewController: UIViewController {
+class CustomAlertViewController: UIViewController {
     
     // MARK: - Properties
     let customAlertView = CustomAlertView()
