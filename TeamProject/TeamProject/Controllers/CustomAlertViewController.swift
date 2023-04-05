@@ -22,6 +22,7 @@ class CustomAlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setAddTarget()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +37,17 @@ class CustomAlertViewController: UIViewController {
         customAlertView.alertDate.text = dateFormatter.string(from: baseDate)
     }
     
+    func setAddTarget() {
+        customAlertView.plusButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+    }
+    
+    
+    @objc func addButtonTapped() {
+        print("얼럿창의 + 버튼 눌림")
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
         self.dismiss(animated: true)
     }
     

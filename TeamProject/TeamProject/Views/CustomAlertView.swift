@@ -103,7 +103,7 @@ final class CustomAlertView: UIView {
     }()
     
     // + 버튼
-    private lazy var plusButton: UIButton = {
+     lazy var plusButton: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 160, y: 100, width: 50, height: 50)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
@@ -238,7 +238,7 @@ extension UIView {
         let circleLayer = CAShapeLayer()
         circleLayer.path = UIBezierPath(ovalIn: bounds).cgPath
         circleLayer.lineWidth = 2.0
-        circleLayer.strokeColor =  UIColor.black.cgColor//border of circle
+        circleLayer.strokeColor =  UIColor.black.cgColor //border of circle
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineJoin = .round
         circleLayer.lineDashPattern = [6,3]

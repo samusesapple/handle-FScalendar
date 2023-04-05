@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 
 protocol MonthlyViewControllerDelegate: AnyObject {
-    func didTapMenuButton() 
+    func didTapMenuButton()
 }
 
 class MonthlyViewController: UIViewController, UINavigationControllerDelegate {
