@@ -12,9 +12,9 @@ protocol MonthlyViewControllerDelegate: AnyObject {
     func didTapMenuButton()
 }
 
-class MonthlyViewController: UIViewController, UINavigationControllerDelegate {
+final class MonthlyViewController: UIViewController, UINavigationControllerDelegate {
     
-    private let topStackView = MonthlyNavigationStackView()
+    let topStackView = MonthlyNavigationStackView()
     private let monthlyView = MonthlyView()
     private let scheduleDateArray = ["2023-04-11"]
     
@@ -33,7 +33,7 @@ class MonthlyViewController: UIViewController, UINavigationControllerDelegate {
     
     
     // MARK: - Helper
-    func configureUI() {
+    private func configureUI() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         
@@ -49,24 +49,24 @@ class MonthlyViewController: UIViewController, UINavigationControllerDelegate {
         mainStack.bringSubviewToFront(topStackView)
     }
     
-    func setCalendar() {
+    private func setCalendar() {
         monthlyView.calendarView.delegate = self
         monthlyView.calendarView.dataSource = self
     }
     
     
-    func setMenuButtonAction() {
+    private func setMenuButtonAction() {
         topStackView.menuButton.addTarget(self, action: #selector(menuTapped), for: .touchUpInside)
     }
 
     
     // MARK: - Actions
-    @objc func menuTapped() {
+    @objc private func menuTapped() {
         print("메뉴 버튼 눌림")
         delegate?.didTapMenuButton()
     }
     
-    func setAlert() {
+    private func setAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let diary = UIAlertAction(title: "일기", style: .default) { action in
@@ -86,11 +86,10 @@ class MonthlyViewController: UIViewController, UINavigationControllerDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setCustomAlert(date: Date) {
-            let customAlert = CustomAlertViewController()
+    private func setCustomAlert(date: Date) {
+            let customAlert = CustomAlertViewController(baseDate: date)
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        customAlert.baseDate = date
             self.present(customAlert, animated: true, completion: nil)
         }
     

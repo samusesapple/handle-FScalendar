@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CustomAlertViewController: UIViewController {
+final class CustomAlertViewController: UIViewController {
     
     // MARK: - Properties
-    let customAlertView = CustomAlertView()
-    var baseDate: Date = Date()
+    lazy var customAlertView = CustomAlertView(date: baseDate)
+    private var baseDate: Date
     
     
     
@@ -20,29 +20,30 @@ class CustomAlertViewController: UIViewController {
         self.view = customAlertView
     }
     
+    init(baseDate: Date) {
+        self.baseDate = baseDate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setAddTarget()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        setDateTitle()
-    }
     
-    
-    // MARK: - Functions for action
-    func setDateTitle() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd (EEE)"
-        customAlertView.alertDate.text = dateFormatter.string(from: baseDate)
-    }
-    
-    func setAddTarget() {
+// MARK: - Helpers
+
+    private  func setAddTarget() {
         customAlertView.plusButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
     }
     
+    // MARK: - Actions
     
-    @objc func addButtonTapped() {
+    @objc private func addButtonTapped() {
         print("얼럿창의 + 버튼 눌림")
     }
     

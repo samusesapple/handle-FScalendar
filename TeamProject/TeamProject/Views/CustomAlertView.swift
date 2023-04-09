@@ -9,7 +9,9 @@ import UIKit
 
 final class CustomAlertView: UIView {
     
-    var alertView: UIView = {
+    private var date: Date
+    
+    private var alertView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
@@ -23,7 +25,7 @@ final class CustomAlertView: UIView {
     
     // MARK: - 얼럿뷰 안에 들어갈 속성
     
-    var alertDate: UILabel = {
+    private var alertDate: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.text = "03.28 (화)"
@@ -103,7 +105,7 @@ final class CustomAlertView: UIView {
     }()
     
     // + 버튼
-     lazy var plusButton: UIButton = {
+    lazy var plusButton: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 160, y: 100, width: 50, height: 50)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
@@ -152,11 +154,13 @@ final class CustomAlertView: UIView {
     
     // MARK: - Initializer
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(date: Date) {
+        self.date = date
+        super.init(frame: .zero)
         self.backgroundColor = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 0.3)
         addSubview(alertView)
         setAlertView()
+        setDateTitle()
     }
     
     required init?(coder: NSCoder) {
@@ -165,8 +169,8 @@ final class CustomAlertView: UIView {
     
     
     
-    // MARK: - set AlertView()
-    func setAlertView() {
+    // MARK: - Helpers
+    private func setAlertView() {
         alertView.addSubview(alertDate)
         alertView.addSubview(diaryStack)
         alertView.addSubview(diaryCircle)
@@ -182,11 +186,15 @@ final class CustomAlertView: UIView {
         plusButton.addDashedCircle()
     }
     
-    
+    private func setDateTitle() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM.dd (EEE)"
+        alertDate.text = dateFormatter.string(from: date)
+    }
     
     // MARK: - set Autolayout()
     
-    func setAutolayout() {
+    private func setAutolayout() {
         alertView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([alertView.centerXAnchor.constraint(equalTo: self.centerXAnchor), alertView.centerYAnchor.constraint(equalTo: self.centerYAnchor), alertView.widthAnchor.constraint(equalToConstant: 250), alertView.heightAnchor.constraint(equalToConstant: 314)])
         

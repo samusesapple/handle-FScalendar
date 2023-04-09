@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+final class MenuViewController: UIViewController {
     
-    enum MenuOptions: String, CaseIterable {
+    private enum MenuOptions: String, CaseIterable {
         case account = "계정"
         case privacy = "개인정보처리방침"
         case library = "오픈소스 라이브러리"
@@ -32,7 +32,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.frame = CGRect(x: 180, y: view.safeAreaInsets.top, width: view.bounds.size.width * 0.5, height: view.bounds.size.height)
+        tableView.frame = CGRect(x: 95, y: view.safeAreaInsets.top, width: view.bounds.size.width * 0.75, height: view.bounds.size.height)
     }
     
     

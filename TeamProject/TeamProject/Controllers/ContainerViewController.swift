@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController {
+final class ContainerViewController: UIViewController {
     
-    enum MenuState {
+    private enum MenuState {
         case opened
         case closed
     }
@@ -48,7 +48,8 @@ extension ContainerViewController: MonthlyViewControllerDelegate {
         switch menuState {
         case .closed:
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
-                self.navVC?.view.frame.origin.x = self.monthlyVC.view.anchorPoint.x - 200
+                self.navVC?.view.frame.origin.x = self.monthlyVC.view.anchorPoint.x - 290
+                self.monthlyVC.topStackView.menuButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
             } completion: { [weak self] done in
                 if done {
                     self?.menuState = .opened
@@ -58,7 +59,7 @@ extension ContainerViewController: MonthlyViewControllerDelegate {
         case .opened:
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
                 self.navVC?.view.frame.origin.x = 0
-                
+                self.monthlyVC.topStackView.menuButton.setImage(UIImage(systemName: "text.justify"), for: .normal)
             } completion: { done in
                 if done {
                     self.menuState = .closed
