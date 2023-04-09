@@ -15,7 +15,7 @@ protocol MonthlyViewControllerDelegate: AnyObject {
 final class MonthlyViewController: UIViewController, UINavigationControllerDelegate {
     
     let topStackView = MonthlyNavigationStackView()
-    private let monthlyView = MonthlyView()
+    private let calendarView = CalendarView()
     private let scheduleDateArray = ["2023-04-11"]
     
     weak var delegate: MonthlyViewControllerDelegate?
@@ -37,7 +37,7 @@ final class MonthlyViewController: UIViewController, UINavigationControllerDeleg
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         
-        let mainStack = UIStackView(arrangedSubviews: [topStackView, monthlyView])
+        let mainStack = UIStackView(arrangedSubviews: [topStackView, calendarView])
         mainStack.axis = .vertical
         
         view.addSubview(mainStack)
@@ -50,8 +50,8 @@ final class MonthlyViewController: UIViewController, UINavigationControllerDeleg
     }
     
     private func setCalendar() {
-        monthlyView.calendarView.delegate = self
-        monthlyView.calendarView.dataSource = self
+        calendarView.calendarView.delegate = self
+        calendarView.calendarView.dataSource = self
     }
     
     
@@ -77,7 +77,7 @@ final class MonthlyViewController: UIViewController, UINavigationControllerDeleg
         }
         let cancel = UIAlertAction(title: "취소하기", style: .cancel) { [weak self] action in
             print("취소버튼 눌림.")
-            self?.monthlyView.calendarView.setCurrentPage(Date(), animated: true)
+            self?.calendarView.calendarView.setCurrentPage(Date(), animated: true)
         }
         alert.addAction(diary)
         alert.addAction(memo)
@@ -124,7 +124,7 @@ extension MonthlyViewController: FSCalendarDelegate, FSCalendarDataSource,  FSCa
     
     // 캘린더 넘길 때마다, navigationBar의 연도.월 바꾸기
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        let currentDate = monthlyView.calendarView.currentPage
+        let currentDate = calendarView.calendarView.currentPage
         topStackView.baseDate = currentDate
     }
     

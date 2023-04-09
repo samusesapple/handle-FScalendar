@@ -16,7 +16,7 @@
 		F1DECA6B29D3CC8B001C758F /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DECA6A29D3CC8B001C758F /* MonthlyViewController.swift */; };
 		F1DECA7029D3CC8C001C758F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DECA6F29D3CC8C001C758F /* Assets.xcassets */; };
 		F1DECA7329D3CC8C001C758F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1DECA7129D3CC8C001C758F /* LaunchScreen.storyboard */; };
-		F1DECA7B29D3E259001C758F /* MonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DECA7A29D3E259001C758F /* MonthlyView.swift */; };
+		F1DECA7B29D3E259001C758F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DECA7A29D3E259001C758F /* CalendarView.swift */; };
 		F1DECA7F29D40C05001C758F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DECA7E29D40C05001C758F /* MenuView.swift */; };
 		F1DECA8129D40C17001C758F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DECA8029D40C17001C758F /* MenuViewController.swift */; };
 		F1DECA8329D42629001C758F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DECA8229D42629001C758F /* ContainerViewController.swift */; };
@@ -36,7 +36,7 @@
 		F1DECA6F29D3CC8C001C758F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1DECA7229D3CC8C001C758F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1DECA7429D3CC8C001C758F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1DECA7A29D3E259001C758F /* MonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyView.swift; sourceTree = "<group>"; };
+		F1DECA7A29D3E259001C758F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F1DECA7E29D40C05001C758F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		F1DECA8029D40C17001C758F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F1DECA8229D42629001C758F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				F117F5D729E2777300A44FCC /* MonthlyNavigationStackView.swift */,
-				F1DECA7A29D3E259001C758F /* MonthlyView.swift */,
+				F1DECA7A29D3E259001C758F /* CalendarView.swift */,
 				F1DECA7E29D40C05001C758F /* MenuView.swift */,
 				F1D0FD0629DBE9B000AB1295 /* CustomAlertView.swift */,
 			);
@@ -247,7 +247,7 @@
 				F117F5D829E2777300A44FCC /* MonthlyNavigationStackView.swift in Sources */,
 				F1DECA6729D3CC8B001C758F /* AppDelegate.swift in Sources */,
 				F1D0FD0529DBE6A500AB1295 /* CustomAlertViewController.swift in Sources */,
-				F1DECA7B29D3E259001C758F /* MonthlyView.swift in Sources */,
+				F1DECA7B29D3E259001C758F /* CalendarView.swift in Sources */,
 				F1DECA6929D3CC8B001C758F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

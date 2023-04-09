@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-class MonthlyView: UIView {
+class CalendarView: UIView {
     
     let calendarView: FSCalendar = {
         let cal = FSCalendar()
