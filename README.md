@@ -13,8 +13,8 @@
 ### 제작 과정
 --- 
 #### Custom NavigationBar & 사이드메뉴 (햄버거 바) 
-1. FSCalendar를 사용한 calendarView 생성
-2. monthlyView의 headerView(customNavigationBar 역할) 생성
+1. FSCalendar를 사용한 calendarView UI 제작
+2. monthlyView의 headerView(customNavigationBar 역할) UI 제작
 3. MonthlyVC에 [headerView, calendarView] stackView로 묶어서 올리기
 4. 사이드메뉴(햄버거메뉴)와 monthlyView를 담을 containerView 생성
 5. containerView - [사이드메뉴, MonthlyView] 순서로 쌓기
@@ -25,7 +25,7 @@
 1. UIView 생성
 2. UIView 위에 customAlert창 역할을 할 view 생성
 3. UIView 배경 색에 alpha값 줘서 반투명하게 만들기
-4. customAlert UI 생성
+4. customAlert UI 제작
 5. calendarView 상의 오늘 날짜 누르면, customAlert present하기 
 6. 화면 터치하면 customAlert dismiss 시키기 
 <br>
