@@ -18,6 +18,7 @@ class MenuViewController: UIViewController {
     private let tableView: UITableView = {
         let tv = UITableView()
         tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tv.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tv.frame.width, height: 80))
         return tv
     }()
     
@@ -31,7 +32,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.bounds.size.width, height: view.bounds.size.height)
+        tableView.frame = CGRect(x: 180, y: view.safeAreaInsets.top, width: view.bounds.size.width * 0.5, height: view.bounds.size.height)
     }
     
     

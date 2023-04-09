@@ -15,13 +15,12 @@ class MonthlyView: UIView {
         cal.locale = Locale(identifier: "ko_KR")
         cal.backgroundColor = .white
         cal.scrollEnabled = true
-        cal.scrollDirection = .vertical
-
+        cal.scrollDirection = .horizontal
+        cal.placeholderType = .none
+        
         // 년월
-        cal.appearance.headerDateFormat = "YYYY년 MM월"
-        cal.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 28)
-        cal.appearance.headerTitleColor = .black
-        cal.appearance.headerTitleAlignment = .left
+        cal.calendarHeaderView.isHidden = true
+        
         // 요일
         cal.weekdayHeight = 100
         cal.appearance.weekdayFont = UIFont.boldSystemFont(ofSize: 20)

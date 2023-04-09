@@ -13,44 +13,54 @@ protocol MonthlyViewControllerDelegate: AnyObject {
 }
 
 class MonthlyViewController: UIViewController, UINavigationControllerDelegate {
+    
+    private let topStackView = MonthlyNavigationStackView()
     private let monthlyView = MonthlyView()
+    private let scheduleDateArray = ["2023-04-11"]
     
     weak var delegate: MonthlyViewControllerDelegate?
     
-    override func loadView() {
-        view = monthlyView
-    }
+    
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         setCalendar()
+        setMenuButtonAction()
     }
     
     
-    // MARK: - set Calendar()
+    // MARK: - Helper
+    func configureUI() {
+        view.backgroundColor = .white
+        navigationController?.navigationBar.isHidden = true
+        
+        let mainStack = UIStackView(arrangedSubviews: [topStackView, monthlyView])
+        mainStack.axis = .vertical
+        
+        view.addSubview(mainStack)
+        
+        mainStack.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), mainStack.bottomAnchor.constraint(equalTo: view.bottomAnchor), mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor), mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor)])
+        mainStack.isLayoutMarginsRelativeArrangement = true
+        mainStack.layoutMargins = .init(top: 0, left: 0, bottom: 0, right: 0)
+        mainStack.bringSubviewToFront(topStackView)
+    }
+    
     func setCalendar() {
         monthlyView.calendarView.delegate = self
         monthlyView.calendarView.dataSource = self
-        setNavigationBar()
     }
     
-    // MARK: - set NavigationBar()
-    func setNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()  // 투명으로
-        
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-        let menu = UIBarButtonItem(image: UIImage(systemName: "text.justify"), style: .done, target: self, action: #selector(menuTapped))
-        navigationItem.rightBarButtonItem = menu
-    }
     
+    func setMenuButtonAction() {
+        topStackView.menuButton.addTarget(self, action: #selector(menuTapped), for: .touchUpInside)
+    }
 
     
-    // MARK: - Functions for action
+    // MARK: - Actions
     @objc func menuTapped() {
         print("메뉴 버튼 눌림")
         delegate?.didTapMenuButton()
@@ -113,6 +123,20 @@ extension MonthlyViewController: FSCalendarDelegate, FSCalendarDataSource,  FSCa
         }
     }
     
+    // 캘린더 넘길 때마다, navigationBar의 연도.월 바꾸기
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        let currentDate = monthlyView.calendarView.currentPage
+        topStackView.baseDate = currentDate
+    }
     
+//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let dateString = dateFormatter.string(from: date)
+//        let eventImage = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(named: "subPurpleColor")!)
+//        print("date : \(dateString)")
+//        return scheduleDateArray.contains(dateString) ? eventImage : nil
+//        }
+//    
 }
 

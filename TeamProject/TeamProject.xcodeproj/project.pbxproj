@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C92797C77B52716E7BB699DD /* Pods_TeamProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D89FE3648EDD3FB1AFC9369 /* Pods_TeamProject.framework */; };
+		F117F5D829E2777300A44FCC /* MonthlyNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F117F5D729E2777300A44FCC /* MonthlyNavigationStackView.swift */; };
 		F1D0FD0529DBE6A500AB1295 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D0FD0429DBE6A500AB1295 /* CustomAlertViewController.swift */; };
 		F1D0FD0729DBE9B000AB1295 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D0FD0629DBE9B000AB1295 /* CustomAlertView.swift */; };
 		F1DECA6729D3CC8B001C758F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DECA6629D3CC8B001C758F /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 		3D89FE3648EDD3FB1AFC9369 /* Pods_TeamProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FEC4B61C2395ABF26807A6 /* Pods-TeamProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamProject.release.xcconfig"; path = "Target Support Files/Pods-TeamProject/Pods-TeamProject.release.xcconfig"; sourceTree = "<group>"; };
 		6B2D016BBEDCFC94DBC0DD40 /* Pods-TeamProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamProject.debug.xcconfig"; path = "Target Support Files/Pods-TeamProject/Pods-TeamProject.debug.xcconfig"; sourceTree = "<group>"; };
+		F117F5D729E2777300A44FCC /* MonthlyNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyNavigationStackView.swift; sourceTree = "<group>"; };
 		F1D0FD0429DBE6A500AB1295 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		F1D0FD0629DBE9B000AB1295 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		F1DECA6329D3CC8B001C758F /* TeamProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 		F1DECA7C29D40B87001C758F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F117F5D729E2777300A44FCC /* MonthlyNavigationStackView.swift */,
 				F1DECA7A29D3E259001C758F /* MonthlyView.swift */,
 				F1DECA7E29D40C05001C758F /* MenuView.swift */,
 				F1D0FD0629DBE9B000AB1295 /* CustomAlertView.swift */,
@@ -115,8 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				F1DECA8229D42629001C758F /* ContainerViewController.swift */,
-				F1DECA8029D40C17001C758F /* MenuViewController.swift */,
 				F1DECA6A29D3CC8B001C758F /* MonthlyViewController.swift */,
+				F1DECA8029D40C17001C758F /* MenuViewController.swift */,
 				F1D0FD0429DBE6A500AB1295 /* CustomAlertViewController.swift */,
 			);
 			path = Controllers;
@@ -241,6 +244,7 @@
 				F1DECA8329D42629001C758F /* ContainerViewController.swift in Sources */,
 				F1D0FD0729DBE9B000AB1295 /* CustomAlertView.swift in Sources */,
 				F1DECA6B29D3CC8B001C758F /* MonthlyViewController.swift in Sources */,
+				F117F5D829E2777300A44FCC /* MonthlyNavigationStackView.swift in Sources */,
 				F1DECA6729D3CC8B001C758F /* AppDelegate.swift in Sources */,
 				F1D0FD0529DBE6A500AB1295 /* CustomAlertViewController.swift in Sources */,
 				F1DECA7B29D3E259001C758F /* MonthlyView.swift in Sources */,
