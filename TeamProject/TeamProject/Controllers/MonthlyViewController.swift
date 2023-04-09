@@ -16,7 +16,6 @@ final class MonthlyViewController: UIViewController, UINavigationControllerDeleg
     
     let topStackView = MonthlyNavigationStackView()
     private let calendarView = CalendarView()
-    private let scheduleDateArray = ["2023-04-11"]
     
     weak var delegate: MonthlyViewControllerDelegate?
     
