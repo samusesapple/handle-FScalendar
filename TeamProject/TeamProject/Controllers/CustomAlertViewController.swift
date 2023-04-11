@@ -31,27 +31,30 @@ final class CustomAlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAddTarget()
+        customAlertView.delegate = self
     }
 
     
-// MARK: - Helpers
+    // MARK: - Helpers
 
-    private  func setAddTarget() {
-        customAlertView.plusButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
-    }
     
     // MARK: - Actions
-    
-    @objc private func addButtonTapped() {
-        print("얼럿창의 + 버튼 눌림")
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         self.dismiss(animated: true)
     }
     
+    
+}
+
+
+// MARK: - CustomAlertViewDelegate
+
+extension CustomAlertViewController: CustomAlertViewDelegate {
+    func handleAddButton() {
+        print("plus button tapped")
+    }
     
     
 }

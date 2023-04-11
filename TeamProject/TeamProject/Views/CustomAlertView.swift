@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol CustomAlertViewDelegate: AnyObject {
+    func handleAddButton()
+}
+
 final class CustomAlertView: UIView {
+    
+    weak var delegate: CustomAlertViewDelegate?
     
     private var date: Date
     
@@ -100,17 +106,18 @@ final class CustomAlertView: UIView {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "lock.fill")
         imageView.tintColor = UIColor.black
-        imageView.frame = CGRect(x: 16, y: 16, width: 16, height: 16)
+        imageView.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
         return imageView
     }()
     
     // + 버튼
-    lazy var plusButton: UIButton = {
+    private lazy var plusButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 160, y: 100, width: 50, height: 50)
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         button.clipsToBounds = true
         button.addSubview(buttonPlusImage)
+        button.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -118,7 +125,7 @@ final class CustomAlertView: UIView {
        let imageView = UIImageView()
         imageView.image = UIImage(systemName: "plus")
         imageView.tintColor = UIColor.black
-        imageView.frame = CGRect(x: 18, y: 18, width: 20, height: 20)
+        imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         return imageView
     }()
     
@@ -167,6 +174,12 @@ final class CustomAlertView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: - Actions
+    
+    @objc func plusButtonTapped() {
+        delegate?.handleAddButton()
+    }
     
     
     // MARK: - Helpers
@@ -249,7 +262,7 @@ extension UIView {
         circleLayer.strokeColor =  UIColor.black.cgColor //border of circle
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineJoin = .round
-        circleLayer.lineDashPattern = [6,3]
+        circleLayer.lineDashPattern = [4,2]
         layer.addSublayer(circleLayer)
     }
 }
